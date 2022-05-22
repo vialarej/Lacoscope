@@ -1,0 +1,20 @@
+sample=['esp1', 'esp2', 'esp1', 'esp3', 'esp1', 'esp1', 'esp3', 'esp2', 'esp2', 'esp1', 'esp3']
+abondance=[]
+R=7 #ratio Vtot/Vobs
+V=100 #volume de l'échantillon en mL
+
+n=len(sample)
+for i in range (n):
+    a=True
+    for j in range (len(abondance)):
+        if sample[i]==abondance[j][0]:
+            abondance[j][1]+=1
+            a=False
+    if a :
+        abondance.append([sample[i],1])
+abondance.append(['total',n])
+
+for i in range (len(abondance)):
+        abondance[i][1]*=(R/V)
+
+print (abondance)
